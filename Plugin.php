@@ -52,6 +52,18 @@ class Plugin extends PluginBase
                         'url' => Backend::url('benfreke/menumanager/menus/reorder'),
                         'permissions' => ['benfreke.menumanager.access_menumanager'],
                     ],
+                    'export' => [
+                        'label' => 'benfreke.menumanager::lang.misc.export_menu',
+                        'icon' => 'icon-upload',
+                        'url' => Backend::url('benfreke/menumanager/menus/export'),
+                        'permissions' => ['benfreke.menumanager.access_menumanager'],
+                    ],
+                    'import' => [
+                        'label' => 'benfreke.menumanager::lang.misc.import_menu',
+                        'icon' => 'icon-download',
+                        'url' => Backend::url('benfreke/menumanager/menus/import'),
+                        'permissions' => ['benfreke.menumanager.access_menumanager'],
+                    ],
                 ],
             ],
         ];

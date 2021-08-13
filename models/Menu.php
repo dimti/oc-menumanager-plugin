@@ -2,10 +2,15 @@
 
 use Cms\Classes\Controller as BaseController;
 use Cms\Classes\Page;
-use Cms\Classes\Theme;
 use Lang;
 use Model;
+use October\Rain\Database\Traits\NestedTree;
+use October\Rain\Database\Traits\Nullable;
+use October\Rain\Database\Traits\Purgeable;
+use October\Rain\Database\Traits\Validation;
+use Dimti\Mirsporta\Models\Category;
 use System\Classes\ApplicationException;
+use System\Models\File;
 use Validator;
 use Input;
 
@@ -14,9 +19,25 @@ use Input;
  */
 class Menu extends Model
 {
-    use \October\Rain\Database\Traits\NestedTree;
-    use \October\Rain\Database\Traits\Validation;
-    use \October\Rain\Database\Traits\Purgeable;
+    use NestedTree;
+    use Validation;
+    use Purgeable;
+    use Nullable;
+
+    public function scopeAllRoot($query)
+    {
+        return $query
+            ->where(function ($query) {
+                $query->whereNull($this->getParentColumnName());
+                $query->orWhere($this->getParentColumnName(), 0);
+            })
+            ;
+    }
+
+    private $nullable = [
+        'parent_id',
+        'category_id',
+    ];
 
     /**
      * @var string The database table used by the model.
@@ -44,7 +65,30 @@ class Menu extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = ['title', 'description', 'parent_id'];
+    protected $fillable = [
+        'id',
+        'parent_id',
+        'title',
+        'description',
+        'url',
+        'created_at',
+        'updated_at',
+        'is_external',
+        'link_target',
+        'enabled',
+        'parameters',
+        'query_string',
+        'category_id',
+        'full_nested_tree',
+        'disables_child_categories',
+    ];
+
+    public $belongsTo = [];
+
+    public $attachOne = [
+        'photo' => File::class,
+    ];
+
 
     /**
      * @var array List of purgeable values.
@@ -282,4 +326,17 @@ class Menu extends Model
         return (int)$attribute;
     }
 
+    public function scopeEnabled($query)
+    {
+        $query->whereEnabled(1);
+    }
+
+    public function filterFields($fields, $context = null)
+    {
+        if (!array_key_exists('category', $this->belongsTo)) {
+            $fields->full_nested_tree->hidden = true;
+            $fields->disables_child_categories->hidden = true;
+            $fields->category->hidden = true;
+        }
+    }
 }

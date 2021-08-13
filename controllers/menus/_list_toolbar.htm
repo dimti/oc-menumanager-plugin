@@ -21,4 +21,17 @@
 
     <!-- Reorder items -->
     <a href="<?= Backend::url('benfreke/menumanager/menus/reorder') ?>" class="btn btn-default oc-icon-bars"><?= e(trans('benfreke.menumanager::lang.misc.manageorder')); ?></a>
+
+    <div class="btn-group">
+        <a
+                href="<?= Backend::url('benfreke/menumanager/menus/export') ?>"
+                class="btn btn-default oc-icon-upload">
+            <?= e(trans('benfreke.menumanager::lang.misc.export_menu')) ?>
+        </a>
+        <a
+                href="<?= Backend::url('benfreke/menumanager/menus/import') ?>"
+                class="btn btn-default oc-icon-download">
+            <?= e(trans('benfreke.menumanager::lang.misc.import_menu')) ?>
+        </a>
+    </div>
 </div>

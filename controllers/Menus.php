@@ -1,5 +1,6 @@
 <?php namespace BenFreke\MenuManager\Controllers;
 
+use Backend\Behaviors\RelationController;
 use BackendMenu;
 use Backend\Classes\Controller;
 use BenFreke\MenuManager\Models\Menu;
@@ -13,9 +14,13 @@ class Menus extends Controller
 {
     public $implement = [
         'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        'Backend.Behaviors.ListController',
+        'Backend.Behaviors.ImportExportController',
+        RelationController::class,
     ];
 
+    public $importExportConfig = 'config_import_export.yaml';
+    public $relationConfig = 'config_relation.yaml';
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 

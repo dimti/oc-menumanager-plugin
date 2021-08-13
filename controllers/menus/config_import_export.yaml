@@ -1,0 +1,13 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+  title: Import menus
+  modelClass: BenFreke\MenuManager\Models\MenuImport
+  list: $/benfreke/menumanager/models/menu/columnsexport.yaml
+
+export:
+  title: Export menus
+  modelClass: BenFreke\MenuManager\Models\MenuExport
+  list: $/benfreke/menumanager/models/menu/columnsexport.yaml

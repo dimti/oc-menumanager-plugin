@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return [
     'plugin' => [
         'name' => 'Menu Manager',
         'description' => 'Plugin to enable management of menus within October CMS.',
@@ -19,6 +17,15 @@ return [
         'newmenu' => 'New Menu',
         'manageorder' => 'Manage Menu Order',
         'returntomenus' => 'Return to Menus',
+        'import_menu' => 'Import menu',
+        'export_menu' => 'Export menu',
+    ],
+    'fields' => [
+        'icon' => 'Icon (also might if you have it in svg)',
+        'category' => 'Category',
+        'disablesChildCategories' => 'Disable children categories',
+        'photo' => 'Promo image',
+        'fullNestedTree' =>  'Connect all categories tree (or only all root if the disable children categories is checked',
     ],
     'form' => [
         'create' => 'Create a Menu item',

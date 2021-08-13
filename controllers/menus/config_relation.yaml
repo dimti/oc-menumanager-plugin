@@ -1,0 +1,14 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+category:
+    label: category
+    view:
+        form: $/dimti/mirsporta/models/category/fields_relation_manager.yaml
+        toolbarButtons: add|remove
+    manage:
+        form: $/dimti/mirsporta/models/category/fields.yaml
+        list: $/dimti/mirsporta/models/category/columns.yaml
+        showSearch: true
+        recordsPerPage: 10

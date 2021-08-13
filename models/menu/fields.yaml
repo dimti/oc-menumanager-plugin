@@ -60,3 +60,31 @@ fields:
     url:
         label: benfreke.menumanager::lang.modeldataform.url
         cssClass: hidden
+    full_nested_tree:
+        label: benfreke.menumanager::lang.fields.fullNestedTree
+        type: switch
+        default: false
+        span: auto
+    disables_child_categories:
+        label: benfreke.menumanager::lang.fields.disablesChildCategories
+        type: switch
+        default: false
+        span: auto
+    category:
+        label: benfreke.menumanager::lang.fields.category
+        type: partial
+        path: ~/plugins/benfreke/menumanager/controllers/menus/_categories.htm
+        span: auto
+        trigger:
+            action: hide
+            field: full_nested_tree
+            condition: checked
+    photo:
+        label: benfreke.menumanager::lang.fields.photo
+        type: fileupload
+        fileTypes: gif,jpg,jpeg,png,svg
+        useCaption: false
+        imageHeight: 270
+        span: auto
+
+
