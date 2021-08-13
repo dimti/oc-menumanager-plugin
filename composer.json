@@ -1,0 +1,25 @@
+{
+    "name": "benfreke/menumanager-plugin",
+    "type": "october-plugin",
+    "description": "Menu manager with connect to self model of your categories and with import & export",
+    "keywords": [
+        "october",
+        "cms",
+        "menu",
+        "plugin"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Demidov",
+            "email": "demidov@dimti.ru"
+        },
+        {
+            "name": "Ben benfreke",
+            "homepage": "https://github.com/benfreke"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
